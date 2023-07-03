@@ -53,7 +53,11 @@ class LoginScreen extends StatelessWidget {
                           top: 0 * fem,
                           child: GestureDetector(
                             onTap: () {
-                              // Implement your Sign in logic here
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()),
+                              );
                             },
                             child: Container(
                               width: 141 * fem,

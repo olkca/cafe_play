@@ -1,8 +1,11 @@
+import 'package:cafe_pay/presentatin/screens/exit.dart';
 import 'package:flutter/material.dart';
 
 class RegitScreen extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmpasswordController =
+      TextEditingController();
 
   RegitScreen({Key? key}) : super(key: key);
 
@@ -36,91 +39,80 @@ class RegitScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                width: 383,
-                height: 77,
-                decoration: const BoxDecoration(
-                  color: Color(0xfffffbfb),
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.fromLTRB(60, 21, 59, 141),
+                padding: EdgeInsets.fromLTRB(
+                    60 * fem, 10 * fem, 59 * fem, 141 * fem),
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 2, 10),
-                      width: 254,
-                      height: 70,
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 2 * fem, 10 * fem),
+                      width: 254 * fem,
+                      height: 70 * fem,
                       child: Stack(
                         children: [
                           Positioned(
-                            left: 0,
-                            top: 0,
-                            child: Align(
-                              child: SizedBox(
-                                width: 141,
-                                height: 40,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: const Color(0xfff9f5f5),
+                            left: 0 * fem,
+                            top: 0 * fem,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen()),
+                                );
+                              },
+                              child: Container(
+                                width: 141 * fem,
+                                height: 40 * fem,
+                                //decoration: BoxDecoration(
+                                // borderRadius: BorderRadius.circular(20 * fem),
+                                //color: const Color(0xfff54749),
+                                // ),
+                                child: Center(
+                                  child: Text(
+                                    'Sign in',
+                                    style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 15 * ffem,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1.2102272034 * ffem / fem,
+                                      color: const Color(0xfff54749),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
                           Positioned(
-                            left: 113,
-                            top: 0,
-                            child: Align(
-                              child: SizedBox(
-                                width: 141,
-                                height: 40,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: const Color(0xfff54749),
-                                  ),
+                            left: 110 * fem,
+                            top: 0 * fem,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RegitScreen()),
+                                );
+                              },
+                              child: Container(
+                                width: 141 * fem,
+                                height: 40 * fem,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(20 * fem),
+                                  color: const Color(0xfff54749),
                                 ),
-                              ),
-                            ),
-                          ),
-                          const Positioned(
-                            left: 36,
-                            top: 11,
-                            child: Align(
-                              child: SizedBox(
-                                width: 144,
-                                height: 59,
-                                child: Text(
-                                  'Sign in',
-                                  style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.2102272034,
-                                    color: Color(0xfff54749),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          const Positioned(
-                            left: 157,
-                            top: 11,
-                            child: Align(
-                              child: SizedBox(
-                                width: 54,
-                                height: 18,
-                                child: Text(
-                                  'Sign up',
-                                  style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w400,
-                                    height: 1.2102272034,
-                                    color: Color(0xffffffff),
+                                child: Center(
+                                  child: Text(
+                                    'Sign up',
+                                    style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 15 * ffem,
+                                      fontWeight: FontWeight.w400,
+                                      height: 1.2102272034 * ffem / fem,
+                                      color: const Color(0xffffffff),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -129,87 +121,145 @@ class RegitScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(8, 0, 7, 20),
-                      padding: const EdgeInsets.fromLTRB(15, 11, 15, 11),
-                      decoration: BoxDecoration(
-                        color: const Color(0xfff8f4f4),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Text(
-                        'Youlakou@gmail.com',
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
-                          height: 1.2102272034,
-                          color: Color(0xff706c6c),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(8, 0, 7, 20),
-                      padding: const EdgeInsets.fromLTRB(15, 12, 15, 10),
-                      decoration: BoxDecoration(
-                        color: const Color(0xfff8f4f4),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Text(
-                        'Password',
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
-                          height: 1.2102272034,
-                          color: Color(0xff706c6c),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(8, 0, 7, 30),
-                      padding: const EdgeInsets.fromLTRB(15, 11, 15, 11),
-                      decoration: BoxDecoration(
-                        color: const Color(0xfff8f4f4),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Text(
-                        'Confirm password',
-                        style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontSize: 15,
-                          fontWeight: FontWeight.w400,
-                          height: 1.2102272034,
-                          color: Color(0xff706c6c),
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 48),
-                      width: double.infinity,
-                      height: 39,
-                      decoration: BoxDecoration(
-                        color: const Color(0xfff54749),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          'Sign up',
-                          style: TextStyle(
-                            fontFamily: 'Inter',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                            height: 1.2102272034,
-                            color: Color(0xffffffff),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.fromLTRB(
+                              8 * fem, 0 * fem, 7 * fem, 20 * fem),
+                          padding: EdgeInsets.fromLTRB(
+                              15 * fem, 11 * fem, 15 * fem, 11 * fem),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color(0xfff8f4f4),
+                            borderRadius: BorderRadius.circular(20 * fem),
+                          ),
+                          child: TextField(
+                            controller: _emailController,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 15 * ffem,
+                              fontWeight: FontWeight.w400,
+                              height: 1.2102272034 * ffem / fem,
+                              color: const Color(0xff706c6c),
+                            ),
+                            decoration: InputDecoration(
+                              hintText: 'Email',
+                              hintStyle: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 15 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 1.2102272034 * ffem / fem,
+                                color: const Color(0xff706c6c),
+                              ),
+                              border: InputBorder.none,
+                            ),
                           ),
                         ),
-                      ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(
+                              8 * fem, 0 * fem, 7 * fem, 20 * fem),
+                          padding: EdgeInsets.fromLTRB(
+                              15 * fem, 12 * fem, 15 * fem, 10 * fem),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color(0xfff8f4f4),
+                            borderRadius: BorderRadius.circular(20 * fem),
+                          ),
+                          child: TextField(
+                            controller: _passwordController,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 15 * ffem,
+                              fontWeight: FontWeight.w400,
+                              height: 1.2102272034 * ffem / fem,
+                              color: const Color(0xff706c6c),
+                            ),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              hintText: 'Password',
+                              hintStyle: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 15 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 1.2102272034 * ffem / fem,
+                                color: const Color(0xff706c6c),
+                              ),
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(
+                              8 * fem, 0 * fem, 7 * fem, 20 * fem),
+                          padding: EdgeInsets.fromLTRB(
+                              15 * fem, 12 * fem, 15 * fem, 10 * fem),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            color: const Color(0xfff8f4f4),
+                            borderRadius: BorderRadius.circular(20 * fem),
+                          ),
+                          child: TextField(
+                            controller: _confirmpasswordController,
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontSize: 15 * ffem,
+                              fontWeight: FontWeight.w400,
+                              height: 1.2102272034 * ffem / fem,
+                              color: const Color(0xff706c6c),
+                            ),
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              hintText: 'Confirm Password',
+                              hintStyle: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 15 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 1.2102272034 * ffem / fem,
+                                color: const Color(0xff706c6c),
+                              ),
+                              border: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     Container(
-                      margin: const EdgeInsets.fromLTRB(10, 0, 11, 0),
+                      margin: EdgeInsets.fromLTRB(
+                          0 * fem, 0 * fem, 0 * fem, 48 * fem),
                       width: double.infinity,
-                      height: 1,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffe1dcdc),
+                      height: 39 * fem,
+                      decoration: BoxDecoration(
+                        color: const Color(0xfff54749),
+                        borderRadius: BorderRadius.circular(20 * fem),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color(0xff000000).withOpacity(0.16),
+                            offset: const Offset(0, 3),
+                            blurRadius: 6,
+                          ),
+                        ],
+                      ),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(20 * fem),
+                          onTap: () {
+                            // Implement your sign-in logic here
+                          },
+                          child: Center(
+                            child: Text(
+                              'Sign up',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 15 * ffem,
+                                fontWeight: FontWeight.w400,
+                                height: 1.2102272034 * ffem / fem,
+                                color: const Color(0xffffffff),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],
