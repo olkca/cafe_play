@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "57666365827",
+    "project_id": "cafe-play-5908e",
+    "storage_bucket": "cafe-play-5908e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:57666365827:android:ec2d5e99fe0601d5fe6eb6",
+        "android_client_info": {
+          "package_name": "com.example.cafe_pay"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "57666365827-bsthufa0d1h2ek0on3h2dsbom4ka6ugu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBu6GGTWUsoEe_Zbu_BdGr0QHLa5DaP-Pg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "57666365827-bsthufa0d1h2ek0on3h2dsbom4ka6ugu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "57666365827-0uol3v0m91cni91le8rv3d2up07urgh4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cafePay.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
