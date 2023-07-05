@@ -1,4 +1,5 @@
 import 'package:cafe_pay/presentatin/screens/exit.dart';
+import 'package:cafe_pay/presentatin/screens/main-screen.dart';
 import 'package:flutter/material.dart';
 
 class RegitScreen extends StatelessWidget {
@@ -66,10 +67,6 @@ class RegitScreen extends StatelessWidget {
                               child: Container(
                                 width: 141 * fem,
                                 height: 40 * fem,
-                                //decoration: BoxDecoration(
-                                // borderRadius: BorderRadius.circular(20 * fem),
-                                //color: const Color(0xfff54749),
-                                // ),
                                 child: Center(
                                   child: Text(
                                     'Sign in',
@@ -93,7 +90,7 @@ class RegitScreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => RegitScreen()),
+                                      builder: (context) => MainScreen()),
                                 );
                               },
                               child: Container(
@@ -245,7 +242,12 @@ class RegitScreen extends StatelessWidget {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(20 * fem),
                           onTap: () {
-                            // Implement your sign-in logic here
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MainScreen(),
+                              ),
+                            );
                           },
                           child: Center(
                             child: Text(
