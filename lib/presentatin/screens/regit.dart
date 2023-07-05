@@ -64,7 +64,7 @@ class RegitScreen extends StatelessWidget {
                                       builder: (context) => LoginScreen()),
                                 );
                               },
-                              child: Container(
+                              child: SizedBox(
                                 width: 141 * fem,
                                 height: 40 * fem,
                                 child: Center(
