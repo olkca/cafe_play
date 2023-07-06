@@ -1,19 +1,57 @@
+// ignore_for_file: use_key_in_widget_constructors
+
 import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Settings extends StatefulWidget {
   const Settings({Key? key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _SettingsState createState() => _SettingsState();
 }
 
 class _SettingsState extends State<Settings> {
-  bool _switchValue = false;
+  late SharedPreferences _prefs;
+  late bool _switchValue;
+  bool get switchValue => _switchValue;
+  @override
+  void initState() {
+    super.initState();
+    initPreferences();
+  }
+
+  Future<void> initPreferences() async {
+    _prefs = await SharedPreferences.getInstance();
+    if (_prefs.containsKey('switchValue')) {
+      setState(() {
+        _switchValue = _prefs.getBool('switchValue')!;
+      });
+    } else {
+      setState(() {
+        _switchValue = false;
+      });
+      await _prefs.setBool('switchValue', _switchValue);
+    }
+  }
+
+  Future<void> savePreferences(bool value) async {
+    setState(() {
+      _switchValue = value;
+    });
+    await _prefs.setBool('switchValue', value);
+  }
 
   @override
   Widget build(BuildContext context) {
+    Color backgroundColor =
+        _switchValue ? const Color.fromARGB(214, 28, 27, 31) : Colors.white;
+    Color textColor =
+        _switchValue ? Colors.white : Colors.black; // Додано новий колір тексту
+
     return Scaffold(
+      backgroundColor: backgroundColor,
       bottomNavigationBar: BottomAppBar(
         elevation: 8.0,
         color: Colors.transparent,
@@ -30,11 +68,11 @@ class _SettingsState extends State<Settings> {
                 color: Colors.white,
                 icon: const Icon(Icons.home),
                 onPressed: () {
-                  // Обробка натискання кнопки "Домівка"
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const MainScreen(),
+                      builder: (context) =>
+                          MainScreen(switchValue: _switchValue),
                     ),
                   );
                 },
@@ -83,19 +121,27 @@ class _SettingsState extends State<Settings> {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
+            Text(
               'Налаштування',
-              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                  color: textColor),
             ),
             SwitchListTile(
-              title: const Text('Toggle Option'),
+              title: Text(
+                'Темна тема',
+                style: TextStyle(
+                  fontSize: 14.0,
+                  //fontWeight: FontWeight.bold,
+                  color: textColor,
+                ),
+              ),
               value: _switchValue,
-              onChanged: (newValue) {
-                setState(() {
-                  _switchValue = newValue;
-                });
+              onChanged: (newValue) async {
+                await savePreferences(newValue);
               },
             ),
             // Add more settings widgets here

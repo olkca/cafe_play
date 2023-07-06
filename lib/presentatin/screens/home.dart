@@ -1,14 +1,19 @@
 import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
-
 import '../widget/home_widget.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final bool switchValue;
+
+  const MainScreen({Key? key, required this.switchValue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Color backgroundColor =
+        switchValue ? const Color.fromARGB(214, 28, 27, 31) : Colors.white;
+
     return Scaffold(
+      backgroundColor: backgroundColor,
       bottomNavigationBar: BottomAppBar(
         elevation: 8.0,
         color: Colors.transparent,
@@ -25,26 +30,21 @@ class MainScreen extends StatelessWidget {
                 color: Colors.white,
                 icon: const Icon(Icons.home),
                 onPressed: () {
-                  // Обробка натискання кнопки "Домівка"
-                  /* Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MainScreen()),
-                  );*/
-                  //закоментовано щоб не було двійного відкриття головної сторінки
+                  // Handle "Home" button press
                 },
               ),
               IconButton(
                 color: Colors.white,
                 icon: const Icon(Icons.search),
                 onPressed: () {
-                  // Обробка натискання кнопки "Пошук"
+                  // Handle "Search" button press
                 },
               ),
               IconButton(
                 color: Colors.white,
                 icon: const Icon(Icons.add_shopping_cart),
                 onPressed: () {
-                  // Обробка натискання кнопки "Кошик"
+                  // Handle "Cart" button press
                 },
               ),
             ],
@@ -77,24 +77,25 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //-------------наповнення інформацією-----------------
             MyInfoText(
               title: "Beef Burger",
               content: "типу опис там какіш мякіш",
               imageUrl:
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg", // Provide the image URL
-              price: 63, // Provide the price value
+                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
+              price: 63,
+              switchValue: switchValue,
             ),
             MyInfoText(
               title: "King Sundae",
               content: "Chocolate",
               imageUrl:
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png", // Provide the image URL
-              price: 100, // Provide the price value
+                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
+              price: 100,
+              switchValue: switchValue,
             ),
           ],
         ),

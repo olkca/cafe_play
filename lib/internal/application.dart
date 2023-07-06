@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-//import '../presentatin/screens/exit.dart';
 import '../presentatin/screens/home.dart';
 
 class Application extends StatelessWidget {
@@ -9,10 +7,12 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "for me",
+      title: "Cafe Play",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: const MainScreen(),
+        body: const MainScreen(
+          switchValue: false,
+        ),
         backgroundColor: Colors.grey[800],
       ),
     );

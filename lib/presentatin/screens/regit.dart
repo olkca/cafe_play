@@ -91,7 +91,9 @@ class RegitScreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const MainScreen()),
+                                      builder: (context) => const MainScreen(
+                                            switchValue: false,
+                                          )),
                                 );
                               },
                               child: Container(
@@ -243,12 +245,12 @@ class RegitScreen extends StatelessWidget {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(20 * fem),
                           onTap: () {
-                            Navigator.push(
+                            /* Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const MainScreen(),
                               ),
-                            );
+                            );*/
                           },
                           child: Center(
                             child: Text(

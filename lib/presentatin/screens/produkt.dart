@@ -3,11 +3,17 @@ import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
 
 class TargetScreen extends StatelessWidget {
-  const TargetScreen({super.key});
+  final bool switchValue;
+
+  const TargetScreen({Key? key, required this.switchValue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    Color backgroundColor =
+        switchValue ? const Color.fromARGB(214, 28, 27, 31) : Colors.white;
+
     return Scaffold(
+      backgroundColor: backgroundColor,
       bottomNavigationBar: BottomAppBar(
         elevation: 8.0,
         color: Colors.transparent,
@@ -27,7 +33,12 @@ class TargetScreen extends StatelessWidget {
                   // Обробка натискання кнопки "Домівка"
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MainScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => MainScreen(
+                        switchValue:
+                            switchValue, // Provide a default value if switchValue is null
+                      ),
+                    ),
                   );
                 },
               ),

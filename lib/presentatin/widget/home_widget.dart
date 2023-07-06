@@ -2,11 +2,18 @@ import 'package:flutter/material.dart';
 
 import '../screens/produkt.dart';
 
+abstract class Tex extends StatelessWidget {
+  final bool switchValue;
+
+  const Tex({super.key, required this.switchValue});
+}
+
 class MyInfoText extends StatelessWidget {
   final String title;
   final String content;
   final String imageUrl;
   final double price;
+  final bool switchValue;
 
   const MyInfoText({
     Key? key,
@@ -14,6 +21,7 @@ class MyInfoText extends StatelessWidget {
     required this.content,
     required this.imageUrl,
     required this.price,
+    required this.switchValue,
   }) : super(key: key);
 
   @override
@@ -23,10 +31,12 @@ class MyInfoText extends StatelessWidget {
       child: Center(
         child: InkWell(
           onTap: () {
-            // Add the navigation logic here
+            // Додайте логіку навігації тут
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const TargetScreen()),
+              MaterialPageRoute(
+                builder: (context) => TargetScreen(switchValue: switchValue),
+              ),
             );
           },
           child: Container(
