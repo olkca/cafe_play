@@ -1,4 +1,5 @@
 import 'package:cafe_pay/presentatin/screens/home.dart';
+import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
 
 class TargetScreen extends StatelessWidget {
@@ -54,6 +55,10 @@ class TargetScreen extends StatelessWidget {
           icon: const Icon(Icons.menu),
           onPressed: () {
             // Perform menu icon action
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const Settings()),
+            );
           },
         ),
         actions: [

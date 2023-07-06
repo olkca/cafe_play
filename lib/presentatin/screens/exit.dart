@@ -16,7 +16,7 @@ class LoginScreen extends StatelessWidget {
       body: Container(
         width: double.infinity,
         decoration: const BoxDecoration(
-          color: Color(0xffffffff),
+          color: Colors.white,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -74,7 +74,7 @@ class LoginScreen extends StatelessWidget {
                                     fontSize: 15 * ffem,
                                     fontWeight: FontWeight.w400,
                                     height: 1.2102272034 * ffem / fem,
-                                    color: const Color(0xffffffff),
+                                    color: Colors.white,
                                   ),
                                 ),
                               ),
@@ -112,10 +112,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(
-                        8 * fem, 0 * fem, 7 * fem, 20 * fem),
-                    padding: EdgeInsets.fromLTRB(
-                        15 * fem, 11 * fem, 15 * fem, 11 * fem),
+                    margin: EdgeInsets.only(bottom: 20 * fem),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 11 * fem, horizontal: 15 * fem),
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: const Color(0xfff8f4f4),
@@ -144,10 +143,9 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(
-                        8 * fem, 0 * fem, 7 * fem, 90 * fem),
-                    padding: EdgeInsets.fromLTRB(
-                        15 * fem, 12 * fem, 15 * fem, 10 * fem),
+                    margin: EdgeInsets.only(bottom: 90 * fem),
+                    padding: EdgeInsets.symmetric(
+                        vertical: 12 * fem, horizontal: 15 * fem),
                     width: double.infinity,
                     decoration: BoxDecoration(
                       color: const Color(0xfff8f4f4),
@@ -177,8 +175,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    margin: EdgeInsets.fromLTRB(
-                        0 * fem, 0 * fem, 0 * fem, 48 * fem),
+                    margin: EdgeInsets.only(bottom: 48 * fem),
                     width: double.infinity,
                     height: 39 * fem,
                     decoration: BoxDecoration(
@@ -207,7 +204,7 @@ class LoginScreen extends StatelessWidget {
                               fontSize: 15 * ffem,
                               fontWeight: FontWeight.w400,
                               height: 1.2102272034 * ffem / fem,
-                              color: const Color(0xffffffff),
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -241,6 +238,7 @@ class LoginScreen extends StatelessWidget {
                           fontSize: 15 * ffem,
                           fontWeight: FontWeight.w400,
                           height: 1.2102272034 * ffem / fem,
+                          color: const Color(0xff706c6c),
                         ),
                       ),
                     ),

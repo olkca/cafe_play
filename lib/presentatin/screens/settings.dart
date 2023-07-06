@@ -1,10 +1,15 @@
-import 'package:cafe_pay/presentatin/screens/settings.dart';
+import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:flutter/material.dart';
 
-import '../widget/home_widget.dart';
+class Settings extends StatefulWidget {
+  const Settings({Key? key});
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  @override
+  _SettingsState createState() => _SettingsState();
+}
+
+class _SettingsState extends State<Settings> {
+  bool _switchValue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,11 +31,12 @@ class MainScreen extends StatelessWidget {
                 icon: const Icon(Icons.home),
                 onPressed: () {
                   // Обробка натискання кнопки "Домівка"
-                  /* Navigator.push(
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MainScreen()),
-                  );*/
-                  //закоментовано щоб не було двійного відкриття головної сторінки
+                    MaterialPageRoute(
+                      builder: (context) => const MainScreen(),
+                    ),
+                  );
                 },
               ),
               IconButton(
@@ -57,10 +63,7 @@ class MainScreen extends StatelessWidget {
           icon: const Icon(Icons.menu),
           onPressed: () {
             // Perform menu icon action
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Settings()),
-            );
+            //тут пусто щоб не було двійного відкриття меню
           },
         ),
         actions: [
@@ -77,25 +80,25 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: const Center(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            //-------------наповнення інформацією-----------------
-            MyInfoText(
-              title: "Beef Burger",
-              content: "типу опис там какіш мякіш",
-              imageUrl:
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg", // Provide the image URL
-              price: 63, // Provide the price value
+            const Text(
+              'Налаштування',
+              style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
             ),
-            MyInfoText(
-              title: "King Sundae",
-              content: "Chocolate",
-              imageUrl:
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png", // Provide the image URL
-              price: 100, // Provide the price value
+            SwitchListTile(
+              title: const Text('Toggle Option'),
+              value: _switchValue,
+              onChanged: (newValue) {
+                setState(() {
+                  _switchValue = newValue;
+                });
+              },
             ),
+            // Add more settings widgets here
           ],
         ),
       ),

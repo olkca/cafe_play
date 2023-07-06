@@ -1,5 +1,6 @@
 import 'package:cafe_pay/presentatin/screens/exit.dart';
-import 'package:cafe_pay/presentatin/screens/main-screen.dart';
+import 'package:cafe_pay/presentatin/screens/home.dart';
+//import 'package:cafe_pay/presentatin/screens/main-screen.dart';
 import 'package:flutter/material.dart';
 
 class RegitScreen extends StatelessWidget {
@@ -90,7 +91,7 @@ class RegitScreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => MainScreen()),
+                                      builder: (context) => const MainScreen()),
                                 );
                               },
                               child: Container(
@@ -245,7 +246,7 @@ class RegitScreen extends StatelessWidget {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => MainScreen(),
+                                builder: (context) => const MainScreen(),
                               ),
                             );
                           },
