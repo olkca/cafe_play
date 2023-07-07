@@ -1,3 +1,4 @@
+//import 'package:cafe_pay/presentatin/screens/about_us.dart';
 import 'package:flutter/material.dart';
 import '../presentatin/screens/home.dart';
 
@@ -10,9 +11,9 @@ class Application extends StatelessWidget {
       title: "Cafe Play",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: const MainScreen(
-          switchValue: false,
-        ),
+        body:
+            const MainScreen(switchValue: false, textWeight: FontWeight.normal),
+        //const About(switchValue: false, textWeight: FontWeight.normal),
         backgroundColor: Colors.grey[800],
       ),
     );

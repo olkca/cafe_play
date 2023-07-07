@@ -1,12 +1,5 @@
 import 'package:flutter/material.dart';
-
 import '../screens/produkt.dart';
-
-abstract class Tex extends StatelessWidget {
-  final bool switchValue;
-
-  const Tex({super.key, required this.switchValue});
-}
 
 class MyInfoText extends StatelessWidget {
   final String title;
@@ -14,6 +7,7 @@ class MyInfoText extends StatelessWidget {
   final String imageUrl;
   final double price;
   final bool switchValue;
+  final bool boldText;
 
   const MyInfoText({
     Key? key,
@@ -22,6 +16,8 @@ class MyInfoText extends StatelessWidget {
     required this.imageUrl,
     required this.price,
     required this.switchValue,
+    required this.boldText,
+    required FontWeight textWeight,
   }) : super(key: key);
 
   @override
@@ -31,11 +27,14 @@ class MyInfoText extends StatelessWidget {
       child: Center(
         child: InkWell(
           onTap: () {
-            // Додайте логіку навігації тут
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TargetScreen(switchValue: switchValue),
+                builder: (context) => TargetScreen(
+                  switchValue: switchValue,
+                  textWeight: boldText ? FontWeight.bold : FontWeight.normal,
+                  boldText: boldText,
+                ),
               ),
             );
           },
@@ -68,29 +67,35 @@ class MyInfoText extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         title,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           color: Colors.black,
                           fontFamily: "Times New Roman",
+                          fontWeight:
+                              boldText ? FontWeight.bold : FontWeight.normal,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         content,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 14,
                           color: Colors.black,
                           fontStyle: FontStyle.italic,
                           fontFamily: "Times New Roman",
+                          fontWeight:
+                              boldText ? FontWeight.bold : FontWeight.normal,
                         ),
                       ),
                       const SizedBox(height: 16),
                       Text(
                         'Ціна: ${price.toStringAsFixed(2)} грн.',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 16,
                           color: Colors.black,
                           fontFamily: "Times New Roman",
+                          fontWeight:
+                              boldText ? FontWeight.bold : FontWeight.normal,
                         ),
                       ),
                     ],

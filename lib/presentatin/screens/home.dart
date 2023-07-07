@@ -1,11 +1,17 @@
+import 'package:cafe_pay/presentatin/screens/about_us.dart';
 import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
 import '../widget/home_widget.dart';
 
 class MainScreen extends StatelessWidget {
   final bool switchValue;
+  final FontWeight textWeight;
 
-  const MainScreen({Key? key, required this.switchValue}) : super(key: key);
+  const MainScreen({
+    Key? key,
+    required this.switchValue,
+    required this.textWeight,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +71,18 @@ class MainScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.person),
+            icon: const Icon(Icons.quiz),
             onPressed: () {
-              // Perform settings icon action
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => About(
+                    switchValue: switchValue,
+                    textWeight:
+                        textWeight, // Передайте значення жирності шрифту
+                  ),
+                ),
+              );
             },
           ),
         ],
@@ -88,6 +103,8 @@ class MainScreen extends StatelessWidget {
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
               price: 63,
               switchValue: switchValue,
+              boldText: true,
+              textWeight: textWeight,
             ),
             MyInfoText(
               title: "King Sundae",
@@ -96,6 +113,8 @@ class MainScreen extends StatelessWidget {
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
               price: 100,
               switchValue: switchValue,
+              boldText: false,
+              textWeight: textWeight,
             ),
           ],
         ),

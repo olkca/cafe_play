@@ -1,3 +1,4 @@
+import 'package:cafe_pay/presentatin/screens/about_us.dart';
 import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,12 @@ import 'package:flutter/material.dart';
 class TargetScreen extends StatelessWidget {
   final bool switchValue;
 
-  const TargetScreen({Key? key, required this.switchValue}) : super(key: key);
+  const TargetScreen(
+      {Key? key,
+      required this.switchValue,
+      required FontWeight textWeight,
+      required bool boldText})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +41,9 @@ class TargetScreen extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => MainScreen(
-                        switchValue:
-                            switchValue, // Provide a default value if switchValue is null
+                        switchValue: switchValue,
+                        textWeight: FontWeight
+                            .normal, // Provide a valid FontWeight value
                       ),
                     ),
                   );
@@ -74,9 +81,18 @@ class TargetScreen extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.person),
+            icon: const Icon(Icons.quiz),
             onPressed: () {
-              // Perform settings icon action
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => About(
+                    switchValue: switchValue,
+                    textWeight:
+                        switchValue ? FontWeight.bold : FontWeight.normal,
+                  ),
+                ),
+              );
             },
           ),
         ],

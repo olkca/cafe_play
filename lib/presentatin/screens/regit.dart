@@ -91,9 +91,11 @@ class RegitScreen extends StatelessWidget {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const MainScreen(
-                                            switchValue: false,
-                                          )),
+                                    builder: (context) => const MainScreen(
+                                      switchValue: false,
+                                      textWeight: FontWeight.normal,
+                                    ),
+                                  ),
                                 );
                               },
                               child: Container(
