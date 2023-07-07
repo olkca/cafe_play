@@ -1,4 +1,5 @@
 import 'package:cafe_pay/presentatin/screens/address.dart';
+import 'package:cafe_pay/presentatin/screens/contakt.dart';
 import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
@@ -130,7 +131,16 @@ class About extends StatelessWidget {
             height: 50.0,
             child: ElevatedButton(
               onPressed: () {
-                // Обробка натиснення на першу кнопку
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Contact(
+                      switchValue: switchValue,
+                      textWeight:
+                          textWeight, // Передайте значення жирності шрифту
+                    ),
+                  ),
+                );
               },
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
