@@ -1,76 +1,95 @@
-import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:flutter/material.dart';
 
-class TargetScreen extends StatelessWidget {
-  const TargetScreen({super.key});
+class ProduktScreen extends StatelessWidget {
+  final String imageUrl;
+
+  const ProduktScreen({Key? key, required this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        elevation: 8.0,
-        color: Colors.transparent,
-        child: Container(
-          height: 56.0,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
-            color: Color(0xfff54749),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.home),
-                onPressed: () {
-                  // Обробка натискання кнопки "Домівка"
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MainScreen()),
-                  );
-                },
-              ),
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.search),
-                onPressed: () {
-                  // Обробка натискання кнопки "Пошук"
-                },
-              ),
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.add_shopping_cart),
-                onPressed: () {
-                  // Обробка натискання кнопки "Кошик"
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
       appBar: AppBar(
         backgroundColor: const Color(0xfff54749),
         leading: IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            // Perform menu icon action
+            Navigator.pop(context);
           },
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () {
-              // Perform settings icon action
-            },
-          ),
-        ],
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20.0),
-          ),
+      ),
+      body: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Color(0xffffffff),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: double.infinity,
+              height: 595,
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 142,
+                    top: 302,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(20, 8, 13, 6),
+                      width: 112,
+                      height: 39,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(imageUrl),
+                        ),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 0, 19, 0),
+                            child: Text(
+                              '-',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                height: 1.2125,
+                                color: Color(0xffffffff),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(0, 0, 21, 0),
+                            child: Text(
+                              '1',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                                height: 1.2125,
+                                color: Color(0xffffffff),
+                              ),
+                            ),
+                          ),
+                          Text(
+                            '+ ',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                              height: 1.2125,
+                              color: Color(0xffffffff),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  // Other positioned widgets...
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-      body: const Center(),
     );
   }
 }

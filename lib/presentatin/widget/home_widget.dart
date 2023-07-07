@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../screens/produkt.dart';
-
 class MyInfoText extends StatelessWidget {
   final String title;
   final String content;
@@ -90,6 +88,23 @@ class MyInfoText extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class TargetScreen extends StatelessWidget {
+  const TargetScreen({super.key});
+
+  // Add your implementation for the TargetScreen widget here
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Target Screen'),
+      ),
+      body: const Center(
+        child: Text('This is the Target Screen'),
       ),
     );
   }

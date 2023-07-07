@@ -1,5 +1,4 @@
-import 'package:cafe_pay/presentatin/screens/main-screen.dart';
-import 'package:cafe_pay/presentatin/screens/main_screen.dart';
+import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -7,6 +6,7 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
@@ -21,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Firebase.initializeApp(); // Initialize Firebase
   }
 
+  // ignore: unused_element
   void _checkButtonEnabled() {
     setState(() {
       _isButtonEnabled =
@@ -33,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
       // Perform sign-in logic here
       Navigator.push(
         context,
+        // ignore: prefer_const_constructors
         MaterialPageRoute(builder: (context) => MainScreen()),
       );
     }
