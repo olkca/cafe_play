@@ -1,5 +1,5 @@
+import 'package:cafe_pay/presentatin/screens/buy.dart';
 import 'package:flutter/material.dart';
-import 'buy.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class MainScreen extends StatelessWidget {
         color: Colors.transparent,
         child: Container(
           height: 56.0,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
             color: Color(0xfff54749),
           ),
@@ -21,7 +21,7 @@ class MainScreen extends StatelessWidget {
             children: [
               IconButton(
                 color: Colors.white,
-                icon: Icon(Icons.home),
+                icon: const Icon(Icons.home),
                 onPressed: () {
                   // Handle "Home" button press
                   Navigator.push(
@@ -32,16 +32,20 @@ class MainScreen extends StatelessWidget {
               ),
               IconButton(
                 color: Colors.white,
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () {
                   // Handle "Search" button press
                 },
               ),
               IconButton(
                 color: Colors.white,
-                icon: Icon(Icons.add_shopping_cart),
+                icon: const Icon(Icons.add_shopping_cart),
                 onPressed: () {
-                  _addToCart(context);
+                  // Handle "Cart" button press
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyWidget ()),
+                  );
                 },
               ),
             ],
@@ -49,22 +53,22 @@ class MainScreen extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
-        backgroundColor: Color(0xfff54749),
+        backgroundColor: const Color(0xfff54749),
         leading: IconButton(
-          icon: Icon(Icons.menu),
+          icon: const Icon(Icons.menu),
           onPressed: () {
             // Perform menu icon action
           },
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.person),
+            icon: const Icon(Icons.person),
             onPressed: () {
               // Perform settings icon action
             },
           ),
         ],
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(20.0),
           ),
@@ -80,12 +84,7 @@ class MainScreen extends StatelessWidget {
               imageUrl: "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
               price: 63,
               onPressed: () {
-                _navigateToProductScreen(
-                  context,
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
-                  "Beef Burger",
-                  63,
-                );
+                _navigateToProductScreen(context, "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg", "Beef Burger", 63);
               },
             ),
             MyInfoText(
@@ -94,12 +93,7 @@ class MainScreen extends StatelessWidget {
               imageUrl: "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
               price: 100,
               onPressed: () {
-                _navigateToProductScreen(
-                  context,
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
-                  "King Sundae",
-                  100,
-                );
+                _navigateToProductScreen(context, "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png", "King Sundae", 100);
               },
             ),
           ],
@@ -108,26 +102,10 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  void _addToCart(BuildContext context) {
-    // Add to cart logic here
-
+  void _navigateToProductScreen(BuildContext context, String imageUrl, String title, int price) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => BuyScreen()),
-    );
-  }
-
-  void _navigateToProductScreen(
-      BuildContext context, String imageUrl, String title, int price) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ProductScreen(
-          imageUrl: imageUrl,
-          title: title,
-          price: price,
-        ),
-      ),
+      MaterialPageRoute(builder: (context) => ProductScreen(imageUrl: imageUrl, title: title, price: price)),
     );
   }
 }
@@ -159,7 +137,7 @@ class MyInfoText extends StatelessWidget {
           ),
           title: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
@@ -170,19 +148,22 @@ class MyInfoText extends StatelessWidget {
             children: [
               Text(
                 '\$$price',
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.black,
                 ),
               ),
-              SizedBox(width: 8.0),
+              const SizedBox(width: 8.0),
               ElevatedButton(
                 onPressed: () {
-                  // Handle "Buy" button press
-                },
+  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => MyWidget ()),
+  );
+},
                 style: ElevatedButton.styleFrom(
                   primary: Colors.orange,
                 ),
-                child: Text(
+                child: const Text(
                   'Buy',
                   style: TextStyle(
                     color: Colors.purple,
@@ -202,12 +183,7 @@ class ProductScreen extends StatelessWidget {
   final String title;
   final int price;
 
-  const ProductScreen({
-    Key? key,
-    required this.imageUrl,
-    required this.title,
-    required this.price,
-  }) : super(key: key);
+  const ProductScreen({Key? key, required this.imageUrl, required this.title, required this.price}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -224,19 +200,19 @@ class ProductScreen extends StatelessWidget {
               width: 200,
               height: 200,
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.red,
                 fontWeight: FontWeight.bold,
                 fontSize: 24.0,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(
               '$price грн',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 16.0,
               ),
@@ -248,24 +224,3 @@ class ProductScreen extends StatelessWidget {
   }
 }
 
-class BuyScreen extends StatelessWidget {
-  const BuyScreen({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Cart'),
-      ),
-      body: Center(
-        child: Text(
-          'Your cart',
-          style: TextStyle(
-            fontSize: 24.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-    );
-  }
-}
