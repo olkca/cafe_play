@@ -98,8 +98,8 @@ class _SettingsState extends State<Settings> {
                     MaterialPageRoute(
                       builder: (context) => MainScreen(
                         switchValue: _switchValue,
-                        textWeight:
-                            _textWeight, // Передайте значення жирності шрифту
+                        textWeight: _textWeight, imageUrl: '', price: 0,
+                        title: '', // Передайте значення жирності шрифту
                       ),
                     ),
                   );

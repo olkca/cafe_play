@@ -11,6 +11,9 @@ class MainScreen extends StatelessWidget {
     Key? key,
     required this.switchValue,
     required this.textWeight,
+    required String imageUrl,
+    required int price,
+    required String title,
   }) : super(key: key);
 
   @override
@@ -153,5 +156,6 @@ void _navigateToProductScreen(
   );
 }
 
+// ignore: non_constant_identifier_names
 ProductScreen(
     {required String imageUrl, required String title, required int price}) {}

@@ -94,6 +94,9 @@ class RegitScreen extends StatelessWidget {
                                     builder: (context) => const MainScreen(
                                       switchValue: false,
                                       textWeight: FontWeight.normal,
+                                      imageUrl: '',
+                                      price: 0,
+                                      title: '',
                                     ),
                                   ),
                                 );

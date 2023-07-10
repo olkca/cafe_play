@@ -11,8 +11,13 @@ class Application extends StatelessWidget {
       title: "Cafe Play",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body:
-            const MainScreen(switchValue: false, textWeight: FontWeight.normal),
+        body: const MainScreen(
+          switchValue: false,
+          textWeight: FontWeight.normal,
+          imageUrl: '',
+          price: 0,
+          title: '',
+        ),
         //const About(switchValue: false, textWeight: FontWeight.normal),
         backgroundColor: Colors.grey[800],
       ),

@@ -41,8 +41,9 @@ class Address extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => MainScreen(
                         switchValue: switchValue,
-                        textWeight:
-                            textWeight, // Передайте значення жирності шрифту
+                        textWeight: textWeight,
+                        imageUrl: '', price: 0,
+                        title: '', // Передайте значення жирності шрифту
                       ),
                     ),
                   );

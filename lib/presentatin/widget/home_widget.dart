@@ -1,3 +1,4 @@
+import 'package:cafe_pay/presentatin/screens/buy.dart';
 import 'package:flutter/material.dart';
 import '../screens/produkt.dart';
 
@@ -8,6 +9,7 @@ class MyInfoText extends StatelessWidget {
   final int price;
   final bool switchValue;
   final bool boldText;
+  final FontWeight textWeight;
   final VoidCallback onPressed;
 
   const MyInfoText({
@@ -19,7 +21,7 @@ class MyInfoText extends StatelessWidget {
     required this.switchValue,
     required this.boldText,
     required this.onPressed,
-    required FontWeight textWeight,
+    required this.textWeight,
   }) : super(key: key);
 
   @override
@@ -103,6 +105,37 @@ class MyInfoText extends StatelessWidget {
                               boldText ? FontWeight.bold : FontWeight.normal,
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top:
+                                16.0), // Adjust the top padding value as needed
+                        child: ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => MyWidget(
+                                  imageUrl: imageUrl,
+                                  price: price,
+                                  title: title,
+                                  switchValue: switchValue,
+                                  textWeight: textWeight,
+                                ),
+                              ),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            // ignore: deprecated_member_use
+                            primary: const Color.fromARGB(255, 241, 153, 154),
+                          ),
+                          child: const Text(
+                            'Купити',
+                            style: TextStyle(
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),

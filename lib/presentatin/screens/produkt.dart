@@ -48,8 +48,8 @@ class ProduktScreen extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => MainScreen(
                         switchValue: switchValue,
-                        textWeight: FontWeight
-                            .normal, // Provide a valid FontWeight value
+                        textWeight: FontWeight.normal, imageUrl: '', price: 0,
+                        title: '', // Provide a valid FontWeight value
                       ),
                     ),
                   );
@@ -118,19 +118,19 @@ class ProduktScreen extends StatelessWidget {
               width: 200,
               height: 200,
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.red,
                 fontWeight: FontWeight.bold,
                 fontSize: 24.0,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(
               '$price грн',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontSize: 16.0,
               ),
