@@ -5,9 +5,10 @@ class MyInfoText extends StatelessWidget {
   final String title;
   final String content;
   final String imageUrl;
-  final double price;
+  final int price;
   final bool switchValue;
   final bool boldText;
+  final VoidCallback onPressed;
 
   const MyInfoText({
     Key? key,
@@ -17,6 +18,7 @@ class MyInfoText extends StatelessWidget {
     required this.price,
     required this.switchValue,
     required this.boldText,
+    required this.onPressed,
     required FontWeight textWeight,
   }) : super(key: key);
 
@@ -30,10 +32,13 @@ class MyInfoText extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TargetScreen(
+                builder: (context) => ProduktScreen(
                   switchValue: switchValue,
                   textWeight: boldText ? FontWeight.bold : FontWeight.normal,
                   boldText: boldText,
+                  imageUrl: imageUrl,
+                  price: price,
+                  title: title,
                 ),
               ),
             );

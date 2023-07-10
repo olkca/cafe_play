@@ -3,14 +3,20 @@ import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
 
-class TargetScreen extends StatelessWidget {
+class ProduktScreen extends StatelessWidget {
   final bool switchValue;
+  final String imageUrl;
+  final String title;
+  final int price;
 
-  const TargetScreen(
+  const ProduktScreen(
       {Key? key,
       required this.switchValue,
+      required this.title,
+      required this.price,
       required FontWeight textWeight,
-      required bool boldText})
+      required bool boldText,
+      required this.imageUrl})
       : super(key: key);
 
   @override
@@ -68,6 +74,7 @@ class TargetScreen extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
+        title: Text('Деталі - $title'),
         backgroundColor: const Color(0xfff54749),
         leading: IconButton(
           icon: const Icon(Icons.menu),
@@ -102,7 +109,35 @@ class TargetScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: const Center(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network(
+              imageUrl,
+              width: 200,
+              height: 200,
+            ),
+            SizedBox(height: 16.0),
+            Text(
+              title,
+              style: TextStyle(
+                color: Colors.red,
+                fontWeight: FontWeight.bold,
+                fontSize: 24.0,
+              ),
+            ),
+            SizedBox(height: 8.0),
+            Text(
+              '$price грн',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 16.0,
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

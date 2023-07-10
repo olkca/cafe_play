@@ -102,6 +102,14 @@ class MainScreen extends StatelessWidget {
               imageUrl:
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
               price: 63,
+              onPressed: () {
+                _navigateToProductScreen(
+                  context,
+                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
+                  "Beef Burger",
+                  63,
+                );
+              },
               switchValue: switchValue,
               boldText: true,
               textWeight: textWeight,
@@ -112,6 +120,14 @@ class MainScreen extends StatelessWidget {
               imageUrl:
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
               price: 100,
+              onPressed: () {
+                _navigateToProductScreen(
+                  context,
+                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
+                  "King Sundae",
+                  100,
+                );
+              },
               switchValue: switchValue,
               boldText: false,
               textWeight: textWeight,
@@ -122,3 +138,20 @@ class MainScreen extends StatelessWidget {
     );
   }
 }
+
+void _navigateToProductScreen(
+    BuildContext context, String imageUrl, String title, int price) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => ProductScreen(
+        imageUrl: imageUrl,
+        title: title,
+        price: price,
+      ),
+    ),
+  );
+}
+
+ProductScreen(
+    {required String imageUrl, required String title, required int price}) {}
