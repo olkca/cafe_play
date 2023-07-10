@@ -1,10 +1,17 @@
+import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:flutter/material.dart';
 
-//import '../presentatin/screens/exit.dart';
-import '../presentatin/screens/home.dart';
-
 class Application extends StatelessWidget {
-  const Application({Key? key}) : super(key: key);
+  final String title;
+  final int price;
+  final String imageUrl;
+
+  const Application({
+    Key? key,
+    required this.title,
+    required this.imageUrl,
+    required this.price,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +19,7 @@ class Application extends StatelessWidget {
       title: "for me",
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: const MainScreen(),
+        body: MainScreen(imageUrl: imageUrl, price: price, title: title),
         backgroundColor: Colors.grey[800],
       ),
     );

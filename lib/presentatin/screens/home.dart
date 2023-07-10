@@ -1,8 +1,17 @@
-import 'package:cafe_pay/presentatin/screens/buy.dart';
 import 'package:flutter/material.dart';
+import 'package:cafe_pay/presentatin/screens/buy.dart';
+
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({Key? key}) : super(key: key);
+  final String title;
+  final String imageUrl;
+  final int price;
+  const MainScreen({
+    Key? key,
+    required this.title,
+    required this.imageUrl,
+    required this.price,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +35,7 @@ class MainScreen extends StatelessWidget {
                   // Handle "Home" button press
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MainScreen()),
+                    MaterialPageRoute(builder: (context) => MainScreen(imageUrl: imageUrl, price: price, title: title,)),
                   );
                 },
               ),
@@ -44,7 +53,7 @@ class MainScreen extends StatelessWidget {
                   // Handle "Cart" button press
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MyWidget ()),
+                    MaterialPageRoute(builder: (context) => MyWidget(imageUrl: 'imageUrl', price: price, title: title,)),
                   );
                 },
               ),
@@ -81,19 +90,29 @@ class MainScreen extends StatelessWidget {
             MyInfoText(
               title: "Beef Burger",
               content: "Description of the burger",
-              imageUrl: "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
+              imageUrl:
+                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
               price: 63,
               onPressed: () {
-                _navigateToProductScreen(context, "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg", "Beef Burger", 63);
+                _navigateToProductScreen(
+                    context,
+                    "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
+                    "Beef Burger",
+                    63);
               },
             ),
             MyInfoText(
               title: "King Sundae",
               content: "Chocolate",
-              imageUrl: "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
+              imageUrl:
+                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
               price: 100,
               onPressed: () {
-                _navigateToProductScreen(context, "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png", "King Sundae", 100);
+                _navigateToProductScreen(
+                    context,
+                    "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
+                    "King Sundae",
+                    100);
               },
             ),
           ],
@@ -102,10 +121,17 @@ class MainScreen extends StatelessWidget {
     );
   }
 
-  void _navigateToProductScreen(BuildContext context, String imageUrl, String title, int price) {
+  void _navigateToProductScreen(
+      BuildContext context, String imageUrl, String title, int price) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => ProductScreen(imageUrl: imageUrl, title: title, price: price)),
+      MaterialPageRoute(
+        builder: (context) => ProductScreen(
+          imageUrl: imageUrl,
+          title: title,
+          price: price,
+        ),
+      ),
     );
   }
 }
@@ -155,12 +181,13 @@ class MyInfoText extends StatelessWidget {
               const SizedBox(width: 8.0),
               ElevatedButton(
                 onPressed: () {
-  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => MyWidget ()),
-  );
-},
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyWidget(imageUrl:imageUrl, price: price, title: title,)),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
+                  // ignore: deprecated_member_use
                   primary: Colors.orange,
                 ),
                 child: const Text(
@@ -183,7 +210,9 @@ class ProductScreen extends StatelessWidget {
   final String title;
   final int price;
 
-  const ProductScreen({Key? key, required this.imageUrl, required this.title, required this.price}) : super(key: key);
+  const ProductScreen(
+      {Key? key, required this.imageUrl, required this.title, required this.price})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +240,7 @@ class ProductScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             Text(
-              '$price грн',
+              '\$$price',
               style: const TextStyle(
                 color: Colors.black,
                 fontSize: 16.0,
@@ -223,4 +252,3 @@ class ProductScreen extends StatelessWidget {
     );
   }
 }
-

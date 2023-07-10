@@ -19,13 +19,13 @@ class ProduktScreen extends StatelessWidget {
       ),
       body: Container(
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Color(0xffffffff),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 595,
               child: Stack(
@@ -34,7 +34,7 @@ class ProduktScreen extends StatelessWidget {
                     left: 142,
                     top: 302,
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(20, 8, 13, 6),
+                      padding: const EdgeInsets.fromLTRB(20, 8, 13, 6),
                       width: 112,
                       height: 39,
                       decoration: BoxDecoration(
@@ -47,8 +47,8 @@ class ProduktScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 19, 0),
-                            child: Text(
+                            margin: const EdgeInsets.fromLTRB(0, 0, 19, 0),
+                            child: const Text(
                               '-',
                               style: TextStyle(
                                 fontSize: 20,
@@ -59,8 +59,8 @@ class ProduktScreen extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 21, 0),
-                            child: Text(
+                            margin: const EdgeInsets.fromLTRB(0, 0, 21, 0),
+                            child: const Text(
                               '1',
                               style: TextStyle(
                                 fontSize: 20,
@@ -70,7 +70,7 @@ class ProduktScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Text(
+                          const Text(
                             '+ ',
                             style: TextStyle(
                               fontSize: 20,
