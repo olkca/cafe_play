@@ -165,6 +165,7 @@ class MyWidget extends StatelessWidget {
                   ),
                 );
               },
+              // ignore: sort_child_properties_last
               child: const Text(
                 'Add to cart',
                 style: TextStyle(
@@ -175,6 +176,7 @@ class MyWidget extends StatelessWidget {
                 ),
               ),
               style: ElevatedButton.styleFrom(
+                // ignore: deprecated_member_use
                 primary: const Color(0xfff54749),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),

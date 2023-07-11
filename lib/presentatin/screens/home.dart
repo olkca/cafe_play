@@ -1,4 +1,5 @@
 import 'package:cafe_pay/presentatin/screens/about_us.dart';
+import 'package:cafe_pay/presentatin/screens/card.dart';
 import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
 import '../widget/home_widget.dart';
@@ -54,6 +55,10 @@ class MainScreen extends StatelessWidget {
                 color: Colors.white,
                 icon: const Icon(Icons.add_shopping_cart),
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => AddCardScreen()),
+                  );
                   // Handle "Cart" button press
                 },
               ),

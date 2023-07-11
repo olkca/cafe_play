@@ -8,6 +8,7 @@ class PaymentSimulationApp extends StatelessWidget {
   final int price;
   final String title;
 
+  // ignore: use_key_in_widget_constructors
   const PaymentSimulationApp({
     required this.switchValue,
     required this.textWeight,
@@ -52,6 +53,7 @@ class PaymentScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _PaymentScreenState createState() => _PaymentScreenState();
 }
 
@@ -63,7 +65,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Payment Simulation'),
+        title: const Text('Payment Simulation'),
       ),
       body: Column(
         children: [
@@ -72,7 +74,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
             subtitle: Text('Price: \$${widget.price}'),
             leading: Image.network(widget.imageUrl),
             trailing: IconButton(
-              icon: Icon(Icons.add_circle),
+              icon: const Icon(Icons.add_circle),
               onPressed: () {
                 setState(() {
                   selectedProducts.add(widget.title);
@@ -82,26 +84,27 @@ class _PaymentScreenState extends State<PaymentScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Text(
               'Total Amount: \$${totalAmount.toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              style:
+                  const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
           ),
           ElevatedButton(
             onPressed: () {
               simulatePayment();
             },
-            child: Text('Pay'),
+            child: const Text('Pay'),
           ),
           ElevatedButton(
             onPressed: () {
               navigateToMainScreen();
             },
-            child: Text('Go to Main Screen'),
+            child: const Text('Go to Main Screen'),
           ),
-          SizedBox(height: 20.0),
-          Text(
+          const SizedBox(height: 20.0),
+          const Text(
             'Selected Products:',
             style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
           ),
@@ -113,7 +116,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 return ListTile(
                   title: Text(product),
                   trailing: IconButton(
-                    icon: Icon(Icons.remove_circle),
+                    icon: const Icon(Icons.remove_circle),
                     onPressed: () {
                       setState(() {
                         selectedProducts.removeAt(index);
@@ -136,11 +139,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Payment'),
-          content: Text('Payment successful!'),
+          title: const Text('Payment'),
+          content: const Text('Payment successful!'),
           actions: [
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.push(
                   context,
