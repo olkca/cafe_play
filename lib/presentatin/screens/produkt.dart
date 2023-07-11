@@ -49,7 +49,8 @@ class ProduktScreen extends StatelessWidget {
                       builder: (context) => MainScreen(
                         switchValue: switchValue,
                         textWeight: FontWeight.normal, imageUrl: '', price: 0,
-                        title: '', // Provide a valid FontWeight value
+                        title: '',
+                        imageURL: '', // Provide a valid FontWeight value
                       ),
                     ),
                   );

@@ -99,7 +99,8 @@ class _SettingsState extends State<Settings> {
                       builder: (context) => MainScreen(
                         switchValue: _switchValue,
                         textWeight: _textWeight, imageUrl: '', price: 0,
-                        title: '', // Передайте значення жирності шрифту
+                        title: '',
+                        imageURL: '', // Передайте значення жирності шрифту
                       ),
                     ),
                   );

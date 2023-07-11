@@ -14,6 +14,7 @@ class MainScreen extends StatelessWidget {
     required String imageUrl,
     required int price,
     required String title,
+    required String imageURL,
   }) : super(key: key);
 
   @override

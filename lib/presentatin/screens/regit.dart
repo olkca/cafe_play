@@ -97,6 +97,7 @@ class RegitScreen extends StatelessWidget {
                                       imageUrl: '',
                                       price: 0,
                                       title: '',
+                                      imageURL: '',
                                     ),
                                   ),
                                 );

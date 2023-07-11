@@ -44,7 +44,8 @@ class Contact extends StatelessWidget {
                       builder: (context) => MainScreen(
                         switchValue: switchValue,
                         textWeight: textWeight, imageUrl: '', price: 0,
-                        title: '', // Передайте значення жирності шрифту
+                        title: '',
+                        imageURL: '', // Передайте значення жирності шрифту
                       ),
                     ),
                   );

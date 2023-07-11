@@ -14,6 +14,7 @@ class PaymentSimulationApp extends StatelessWidget {
     required this.imageUrl,
     required this.price,
     required this.title,
+    required key,
   });
 
   @override
@@ -95,9 +96,34 @@ class _PaymentScreenState extends State<PaymentScreen> {
           ),
           ElevatedButton(
             onPressed: () {
-              navigateToMainScreen(); // Добавляем новую кнопку, которая вызывает функцию для перехода на другой экран
+              navigateToMainScreen();
             },
             child: Text('Go to Main Screen'),
+          ),
+          SizedBox(height: 20.0),
+          Text(
+            'Selected Products:',
+            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: selectedProducts.length,
+              itemBuilder: (BuildContext context, int index) {
+                final product = selectedProducts[index];
+                return ListTile(
+                  title: Text(product),
+                  trailing: IconButton(
+                    icon: Icon(Icons.remove_circle),
+                    onPressed: () {
+                      setState(() {
+                        selectedProducts.removeAt(index);
+                        totalAmount -= widget.price.toDouble();
+                      });
+                    },
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -125,6 +151,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             textWeight: widget.textWeight,
                             switchValue: widget.switchValue,
                             title: widget.title,
+                            imageURL: '',
                           )),
                 );
               },
@@ -145,6 +172,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           textWeight: widget.textWeight,
           switchValue: widget.switchValue,
           title: widget.title,
+          imageURL: '',
         ),
       ),
     );

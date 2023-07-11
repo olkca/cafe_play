@@ -17,6 +17,7 @@ class Application extends StatelessWidget {
           imageUrl: '',
           price: 0,
           title: '',
+          imageURL: '',
         ),
         //const About(switchValue: false, textWeight: FontWeight.normal),
         backgroundColor: Colors.grey[800],
