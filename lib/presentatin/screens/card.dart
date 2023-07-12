@@ -1,3 +1,5 @@
+import 'package:cafe_pay/presentatin/screens/about_us.dart';
+import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,6 +24,11 @@ class _AddCardScreenState extends State<AddCardScreen> {
   final TextEditingController _cardNumberController = TextEditingController();
   final TextEditingController _expiryDateController = TextEditingController();
   final TextEditingController _cvvController = TextEditingController();
+  late bool _switchValue;
+  bool get switchValue => _switchValue;
+  late bool _boldText;
+  bool get boldText => _boldText;
+  late FontWeight _textWeight;
 
   @override
   void initState() {
@@ -62,9 +69,87 @@ class _AddCardScreenState extends State<AddCardScreen> {
         return true;
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Додати картку'),
+        bottomNavigationBar: BottomAppBar(
+          elevation: 8.0,
+          color: Colors.transparent,
+          child: Container(
+            height: 56.0,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
+              color: Color(0xfff54749),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MainScreen(
+                          //switchValue: _switchValue,
+                          textWeight: _textWeight, imageUrl: '', price: 0,
+                          title: '',
+                          imageURL: '',
+                          switchValue:
+                              switchValue, // Передайте значення жирності шрифту
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                IconButton(
+                  color: Colors.white,
+                  icon: const Icon(Icons.search),
+                  onPressed: () {
+                    // Handle search button press
+                  },
+                ),
+                IconButton(
+                  color: Colors.white,
+                  icon: const Icon(Icons.add_shopping_cart),
+                  onPressed: () {
+                    // Handle cart button press
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
+        appBar: AppBar(
+          backgroundColor: const Color(0xfff54749),
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {
+              // Perform menu icon action
+            },
+          ),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.quiz),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => About(
+                      switchValue: _switchValue,
+                      textWeight: _textWeight,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20.0),
+            ),
+          ),
+        ), // <-- Add closing parenthesis here
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
