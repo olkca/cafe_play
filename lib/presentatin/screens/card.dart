@@ -25,11 +25,9 @@ class _AddCardScreenState extends State<AddCardScreen> {
   final TextEditingController _cardNumberController = TextEditingController();
   final TextEditingController _expiryDateController = TextEditingController();
   final TextEditingController _cvvController = TextEditingController();
-  late bool _switchValue;
-  bool get switchValue => _switchValue;
-  late bool _boldText;
-  bool get boldText => _boldText;
-  late FontWeight _textWeight;
+  late bool _switchValue = false;
+  late bool _boldText = false;
+  late FontWeight _textWeight = FontWeight.normal;
 
   @override
   void initState() {
@@ -92,7 +90,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => MainScreen(
-                          switchValue: switchValue,
+                          switchValue: _switchValue,
                           textWeight: _textWeight,
                           imageUrl: '',
                           price: 0,
@@ -137,7 +135,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
                   context,
                   MaterialPageRoute(
                     builder: (context) => About(
-                      switchValue: switchValue,
+                      switchValue: _switchValue,
                       textWeight: _textWeight,
                     ),
                   ),
