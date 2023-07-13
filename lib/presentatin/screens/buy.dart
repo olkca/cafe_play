@@ -2,7 +2,6 @@ import 'package:cafe_pay/presentatin/screens/baket.dart';
 import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
-
 import 'about_us.dart';
 
 class MyWidget extends StatelessWidget {
