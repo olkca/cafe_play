@@ -71,7 +71,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         children: [
           ListTile(
             title: Text(widget.title),
-            subtitle: Text('Price: \$${widget.price}'),
+            subtitle: Text('Ціна: ₴${widget.price}'),
             leading: Image.network(widget.imageUrl),
             trailing: IconButton(
               icon: const Icon(Icons.add_circle),
@@ -86,7 +86,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           Container(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              'Total Amount: \$${totalAmount.toStringAsFixed(2)}',
+              'Сума: ₴${totalAmount.toStringAsFixed(2)}',
               style:
                   const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
@@ -95,17 +95,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
             onPressed: () {
               simulatePayment();
             },
-            child: const Text('Pay'),
+            child: const Text('Оплата'),
           ),
           ElevatedButton(
             onPressed: () {
               navigateToMainScreen();
             },
-            child: const Text('Go to Main Screen'),
+            child: const Text('Перейти назад на головний екран'),
           ),
           const SizedBox(height: 20.0),
           const Text(
-            'Selected Products:',
+            'Вибрана кількість:',
             style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
           ),
           Expanded(
@@ -139,8 +139,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Payment'),
-          content: const Text('Payment successful!'),
+          title: const Text('Оплата'),
+          content: const Text('Оплата пройшла успішно!'),
           actions: [
             TextButton(
               child: const Text('OK'),

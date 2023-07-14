@@ -15,8 +15,10 @@ class CardModel {
   });
 }
 
+// ignore: use_key_in_widget_constructors
 class AddCardScreen extends StatefulWidget {
   @override
+  // ignore: library_private_types_in_public_api
   _AddCardScreenState createState() => _AddCardScreenState();
 }
 
@@ -25,9 +27,10 @@ class _AddCardScreenState extends State<AddCardScreen> {
   final TextEditingController _cardNumberController = TextEditingController();
   final TextEditingController _expiryDateController = TextEditingController();
   final TextEditingController _cvvController = TextEditingController();
-  late bool _switchValue = false;
-  late bool _boldText = false;
-  late FontWeight _textWeight = FontWeight.normal;
+  late final bool _switchValue = false;
+  // ignore: unused_field
+  late final bool _boldText = false;
+  late final FontWeight _textWeight = FontWeight.normal;
 
   @override
   void initState() {

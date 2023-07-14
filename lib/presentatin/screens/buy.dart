@@ -166,7 +166,7 @@ class MyWidget extends StatelessWidget {
               },
               // ignore: sort_child_properties_last
               child: const Text(
-                'Add to cart',
+                'Додати до кошика',
                 style: TextStyle(
                   fontFamily: 'Inter',
                   fontSize: 14.0,

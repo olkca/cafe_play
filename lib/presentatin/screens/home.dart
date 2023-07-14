@@ -107,9 +107,9 @@ class MainScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+                    padding: EdgeInsets.only(left: 16.0),
                     child: Text(
                       "Cafe Play",
                       style: TextStyle(
@@ -131,7 +131,7 @@ class MainScreen extends StatelessWidget {
             ),
             MyInfoText(
               title: "Beef Burger",
-              content: "типу опис там мякіш",
+              content: "<Бургер>",
               imageUrl:
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
               price: 63,
@@ -149,7 +149,7 @@ class MainScreen extends StatelessWidget {
             ),
             MyInfoText(
               title: "King Sundae",
-              content: "Chocolate",
+              content: "Коктель",
               imageUrl:
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
               price: 100,

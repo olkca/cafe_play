@@ -1,4 +1,3 @@
-import 'package:cafe_pay/presentatin/screens/address.dart';
 import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
@@ -85,11 +84,8 @@ class Contact extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.quiz),
-            onPressed: () {
-              // Perform quiz icon action
-              // TODO: Add your action here
-              print('Quiz button pressed!');
-            },
+            // ignore: avoid_print
+            onPressed: () => print('Quiz button pressed!'),
           ),
         ],
         shape: const RoundedRectangleBorder(

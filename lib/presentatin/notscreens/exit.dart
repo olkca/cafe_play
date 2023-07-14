@@ -1,4 +1,4 @@
-import 'package:cafe_pay/presentatin/screens/regit.dart';
+/*import 'package:cafe_pay/presentatin/screens/regit.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -251,4 +251,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-}
+}*/
