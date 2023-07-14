@@ -8,14 +8,15 @@ class CardModel {
   final String expiryDate;
   final String cvv;
 
-  CardModel(
-      {required this.cardNumber, required this.expiryDate, required this.cvv});
+  CardModel({
+    required this.cardNumber,
+    required this.expiryDate,
+    required this.cvv,
+  });
 }
 
-// ignore: use_key_in_widget_constructors
 class AddCardScreen extends StatefulWidget {
   @override
-  // ignore: library_private_types_in_public_api
   _AddCardScreenState createState() => _AddCardScreenState();
 }
 
@@ -24,11 +25,9 @@ class _AddCardScreenState extends State<AddCardScreen> {
   final TextEditingController _cardNumberController = TextEditingController();
   final TextEditingController _expiryDateController = TextEditingController();
   final TextEditingController _cvvController = TextEditingController();
-  late bool _switchValue;
-  bool get switchValue => _switchValue;
-  late bool _boldText;
-  bool get boldText => _boldText;
-  late FontWeight _textWeight;
+  late bool _switchValue = false;
+  late bool _boldText = false;
+  late FontWeight _textWeight = FontWeight.normal;
 
   @override
   void initState() {
@@ -91,12 +90,12 @@ class _AddCardScreenState extends State<AddCardScreen> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => MainScreen(
-                          //switchValue: _switchValue,
-                          textWeight: _textWeight, imageUrl: '', price: 0,
+                          switchValue: _switchValue,
+                          textWeight: _textWeight,
+                          imageUrl: '',
+                          price: 0,
                           title: '',
                           imageURL: '',
-                          switchValue:
-                              switchValue, // Передайте значення жирності шрифту
                         ),
                       ),
                     );
@@ -149,7 +148,7 @@ class _AddCardScreenState extends State<AddCardScreen> {
               bottom: Radius.circular(20.0),
             ),
           ),
-        ), // <-- Add closing parenthesis here
+        ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -178,7 +177,6 @@ class _AddCardScreenState extends State<AddCardScreen> {
               const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () {
-                  // Обробник натиснення кнопки "Додати"
                   String cardNumber = _cardNumberController.text;
                   String expiryDate = _expiryDateController.text;
                   String cvv = _cvvController.text;

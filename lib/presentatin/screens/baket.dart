@@ -23,7 +23,7 @@ class PaymentSimulationApp extends StatelessWidget {
     return MaterialApp(
       title: 'Payment Simulation',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: PaymentScreen(
         title: title,

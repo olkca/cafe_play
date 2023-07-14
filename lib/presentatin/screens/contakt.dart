@@ -1,4 +1,3 @@
-// ignore: unused_import
 import 'package:cafe_pay/presentatin/screens/address.dart';
 import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:cafe_pay/presentatin/screens/settings.dart';
@@ -43,9 +42,11 @@ class Contact extends StatelessWidget {
                     MaterialPageRoute(
                       builder: (context) => MainScreen(
                         switchValue: switchValue,
-                        textWeight: textWeight, imageUrl: '', price: 0,
+                        textWeight: textWeight,
+                        imageUrl: '',
+                        price: 0,
                         title: '',
-                        imageURL: '', // Передайте значення жирності шрифту
+                        imageURL: '',
                       ),
                     ),
                   );
@@ -85,7 +86,9 @@ class Contact extends StatelessWidget {
           IconButton(
             icon: const Icon(Icons.quiz),
             onPressed: () {
-              // Perform settings icon action
+              // Perform quiz icon action
+              // TODO: Add your action here
+              print('Quiz button pressed!');
             },
           ),
         ],
@@ -109,7 +112,7 @@ class Contact extends StatelessWidget {
                 color: textColor,
               ),
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 160.0),
             Text(
               'Телефони:',
               style: TextStyle(
@@ -134,8 +137,9 @@ class Contact extends StatelessWidget {
               ),
             ),
             Expanded(
-                child:
-                    Container()), // Adds empty space to push the following content to the bottom
+              child:
+                  Container(), // Adds empty space to push the following content to the bottom
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
