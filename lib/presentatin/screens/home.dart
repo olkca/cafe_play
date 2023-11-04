@@ -1,6 +1,6 @@
-import 'package:cafe_pay/presentatin/screens/about_us.dart';
+//import 'package:cafe_pay/presentatin/screens/about_us.dart';
 import 'package:cafe_pay/presentatin/screens/card.dart';
-import 'package:cafe_pay/presentatin/screens/settings.dart';
+//import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
 import '../widget/home_widget.dart';
 
@@ -66,11 +66,11 @@ class MainScreen extends StatelessWidget {
           ),
         ),
       ),
-      appBar: AppBar(
+      /*appBar: AppBar(
         backgroundColor: const Color(0xfff54749),
         leading: IconButton(
           icon: const Icon(Icons.menu),
-          onPressed: () {
+          onPressed: () { 
             // Perform menu icon action
             Navigator.push(
               context,
@@ -100,72 +100,67 @@ class MainScreen extends StatelessWidget {
             bottom: Radius.circular(20.0),
           ),
         ),
-      ),
+      ),*/
       body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                const Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 16.0),
-                    child: Text(
-                      "Cafe Play",
-                      style: TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 40.0), // Add top padding here
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 16.0),
+                      child: Text(
+                        "Cafe Play",
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: Image.network(
-                    "https://cdn.discordapp.com/attachments/1078778256720932865/1129106666936344596/photo_5290029971043110767_x.jpg",
-                    width: 50,
-                    height: 50,
-                  ),
-                ),
-              ],
-            ),
-            MyInfoText(
-              title: "Beef Burger",
-              content: "<Бургер>",
-              imageUrl:
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
-              price: 63,
-              onPressed: () {
-                _navigateToProductScreen(
-                  context,
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
-                  "Beef Burger",
-                  63,
-                );
-              },
-              switchValue: switchValue,
-              boldText: true,
-              textWeight: textWeight,
-            ),
-            MyInfoText(
-              title: "King Sundae",
-              content: "Коктель",
-              imageUrl:
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
-              price: 100,
-              onPressed: () {
-                _navigateToProductScreen(
-                  context,
-                  "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
-                  "King Sundae",
-                  100,
-                );
-              },
-              switchValue: switchValue,
-              boldText: true, // Встановіть жирність шрифту для "King Sundae"
-              textWeight: textWeight,
-            ),
-          ],
+                ],
+              ),
+              MyInfoText(
+                title: "Beef Burger",
+                content: "<Бургер>",
+                imageUrl:
+                    "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
+                price: 63,
+                onPressed: () {
+                  _navigateToProductScreen(
+                    context,
+                    "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
+                    "Beef Burger",
+                    63,
+                  );
+                },
+                switchValue: switchValue,
+                boldText: true,
+                textWeight: textWeight,
+              ),
+              MyInfoText(
+                title: "King Sundae",
+                content: "Коктель",
+                imageUrl:
+                    "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
+                price: 100,
+                onPressed: () {
+                  _navigateToProductScreen(
+                    context,
+                    "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
+                    "King Sundae",
+                    100,
+                  );
+                },
+                switchValue: switchValue,
+                boldText: true, // Встановіть жирність шрифту для "King Sundae"
+                textWeight: textWeight,
+              ),
+            ],
+          ),
         ),
       ),
     );
