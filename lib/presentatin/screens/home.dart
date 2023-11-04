@@ -27,45 +27,45 @@ class MainScreen extends StatelessWidget {
       backgroundColor: backgroundColor,
       bottomNavigationBar: BottomAppBar(
         elevation: 8.0,
-        color: Colors.transparent,
-        child: Container(
-          height: 56.0,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
-            color: Color(0xfff54749),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.home),
-                onPressed: () {
-                  // Handle "Home" button press
-                },
-              ),
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.search),
-                onPressed: () {
-                  // Handle "Search" button press
-                },
-              ),
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.add_shopping_cart),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => AddCardScreen()),
-                  );
-                  // Handle "Cart" button press
-                },
-              ),
-            ],
-          ),
+        //color: Colors.transparent,
+        //child: Container(
+        //height: 56.0,
+        //decoration: const BoxDecoration(
+        //borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
+        // color: Color(0xfff54749),
+        // ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              color: Colors.blue,
+              icon: const Icon(Icons.home),
+              onPressed: () {
+                // Handle "Home" button press
+              },
+            ),
+            IconButton(
+              color: Colors.blue,
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                // Handle "Search" button press
+              },
+            ),
+            IconButton(
+              color: Colors.blue,
+              icon: const Icon(Icons.add_shopping_cart),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AddCardScreen()),
+                );
+                // Handle "Cart" button press
+              },
+            ),
+          ],
         ),
       ),
+      //),
       /*appBar: AppBar(
         backgroundColor: const Color(0xfff54749),
         leading: IconButton(
