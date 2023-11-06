@@ -71,56 +71,53 @@ class _AddCardScreenState extends State<AddCardScreen> {
         return true;
       },
       child: Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          elevation: 8.0,
-          color: Colors.transparent,
-          child: Container(
-            height: 56.0,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
-              color: Color(0xfff54749),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.home,
-                    color: Colors.white,
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.add_shopping_cart),
+              label: 'Cart',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: 'Settings',
+            ),
+          ],
+          selectedItemColor: Colors.red, // Колір активного пункту
+          unselectedItemColor: Colors.grey, // Колір неактивних пунктів
+          currentIndex: 2, // Поточний індекс активного пункту
+          onTap: (index) {
+            // Обробка натискання пункту BottomNavigationBar
+            if (index == 0) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MainScreen(
+                    switchValue: _switchValue,
+                    textWeight: _textWeight,
+                    imageUrl: '',
+                    price: 0,
+                    title: '',
+                    imageURL: '',
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainScreen(
-                          switchValue: _switchValue,
-                          textWeight: _textWeight,
-                          imageUrl: '',
-                          price: 0,
-                          title: '',
-                          imageURL: '',
-                        ),
-                      ),
-                    );
-                  },
                 ),
-                IconButton(
-                  color: Colors.white,
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    // Handle search button press
-                  },
-                ),
-                IconButton(
-                  color: Colors.white,
-                  icon: const Icon(Icons.add_shopping_cart),
-                  onPressed: () {
-                    // Handle cart button press
-                  },
-                ),
-              ],
-            ),
-          ),
+              );
+              // Home
+            } else if (index == 1) {
+              // Search
+            } else if (index == 2) {
+              // Cart
+            } else if (index == 3) {
+              // Settings (перейти на сторінку налаштувань)
+            }
+          },
         ),
         appBar: AppBar(
           backgroundColor: const Color(0xfff54749),

@@ -25,45 +25,44 @@ class MainScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: backgroundColor,
-      bottomNavigationBar: BottomAppBar(
-        elevation: 8.0,
-        //color: Colors.transparent,
-        //child: Container(
-        //height: 56.0,
-        //decoration: const BoxDecoration(
-        //borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
-        // color: Color(0xfff54749),
-        // ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              color: Colors.blue,
-              icon: const Icon(Icons.home),
-              onPressed: () {
-                // Handle "Home" button press
-              },
-            ),
-            IconButton(
-              color: Colors.blue,
-              icon: const Icon(Icons.search),
-              onPressed: () {
-                // Handle "Search" button press
-              },
-            ),
-            IconButton(
-              color: Colors.blue,
-              icon: const Icon(Icons.add_shopping_cart),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => AddCardScreen()),
-                );
-                // Handle "Cart" button press
-              },
-            ),
-          ],
-        ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_shopping_cart),
+            label: 'Cart',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+        ],
+        selectedItemColor: Colors.red, // Колір активного пункту
+        unselectedItemColor: Colors.grey, // Колір неактивних пунктів
+        currentIndex: 0, // Поточний індекс активного пункту
+        onTap: (index) {
+          // Обробка натискання пункту BottomNavigationBar
+          if (index == 0) {
+            // Home
+          } else if (index == 1) {
+            // Search
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AddCardScreen()),
+            );
+            // Cart
+          } else if (index == 3) {
+            // Settings (перейти на сторінку налаштувань)
+          }
+        },
       ),
       //),
       /*appBar: AppBar(
