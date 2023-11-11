@@ -1,5 +1,3 @@
-import 'package:cafe_pay/presentatin/screens/about_us.dart';
-import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -15,8 +13,9 @@ class CardModel {
   });
 }
 
-// ignore: use_key_in_widget_constructors
 class AddCardScreen extends StatefulWidget {
+  const AddCardScreen({Key? key}) : super(key: key);
+
   @override
   // ignore: library_private_types_in_public_api
   _AddCardScreenState createState() => _AddCardScreenState();
@@ -27,10 +26,6 @@ class _AddCardScreenState extends State<AddCardScreen> {
   final TextEditingController _cardNumberController = TextEditingController();
   final TextEditingController _expiryDateController = TextEditingController();
   final TextEditingController _cvvController = TextEditingController();
-  late final bool _switchValue = false;
-  // ignore: unused_field
-  late final bool _boldText = false;
-  late final FontWeight _textWeight = FontWeight.normal;
 
   @override
   void initState() {
@@ -63,156 +58,159 @@ class _AddCardScreenState extends State<AddCardScreen> {
     await prefs.setStringList('cards', cardStrings);
   }
 
+  void deleteCard(int index) {
+    setState(() {
+      cards.removeAt(index);
+      saveCards();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        saveCards();
-        return true;
-      },
-      child: Scaffold(
-        bottomNavigationBar: BottomAppBar(
-          elevation: 8.0,
-          color: Colors.transparent,
-          child: Container(
-            height: 56.0,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
-              color: Color(0xfff54749),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.home,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainScreen(
-                          switchValue: _switchValue,
-                          textWeight: _textWeight,
-                          imageUrl: '',
-                          price: 0,
-                          title: '',
-                          imageURL: '',
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Add Card'),
+        backgroundColor: Colors.red,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(30.0),
+              child: Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.1),
+                ),
+                child: Column(
+                  children: [
+                    buildTextField(_cardNumberController, 'Card Number', 16),
+                    const SizedBox(height: 16.0),
+                    buildTextField(_expiryDateController, 'Expiry Date', 5),
+                    const SizedBox(height: 16.0),
+                    buildTextField(_cvvController, 'CVV', 3),
+                    const SizedBox(height: 16.0),
+                    ElevatedButton(
+                      onPressed: () {
+                        String cardNumber = _cardNumberController.text;
+                        String expiryDate = _expiryDateController.text;
+                        String cvv = _cvvController.text;
+
+                        if (cardNumber.length == 16 &&
+                            (expiryDate.length == 4 ||
+                                expiryDate.length == 5) &&
+                            cvv.length == 3) {
+                          CardModel card = CardModel(
+                            cardNumber: cardNumber,
+                            expiryDate: expiryDate,
+                            cvv: cvv,
+                          );
+                          setState(() {
+                            cards.insert(0, card);
+                          });
+                          _cardNumberController.clear();
+                          _expiryDateController.clear();
+                          _cvvController.clear();
+                          saveCards();
+                        }
+                      },
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.transparent),
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
                         ),
                       ),
-                    );
-                  },
-                ),
-                IconButton(
-                  color: Colors.white,
-                  icon: const Icon(Icons.search),
-                  onPressed: () {
-                    // Handle search button press
-                  },
-                ),
-                IconButton(
-                  color: Colors.white,
-                  icon: const Icon(Icons.add_shopping_cart),
-                  onPressed: () {
-                    // Handle cart button press
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-        appBar: AppBar(
-          backgroundColor: const Color(0xfff54749),
-          leading: IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () {
-              // Perform menu icon action
-            },
-          ),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.quiz),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => About(
-                      switchValue: _switchValue,
-                      textWeight: _textWeight,
+                      child: const Text('Add'),
                     ),
-                  ),
-                );
-              },
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 16.0),
+            Expanded(
+              child: ListView.builder(
+                itemCount: cards.length,
+                itemBuilder: (context, index) {
+                  CardModel card = cards[index];
+                  return Dismissible(
+                    key: UniqueKey(),
+                    onDismissed: (direction) {
+                      deleteCard(index);
+                    },
+                    background: Container(
+                      color: Colors.red,
+                      alignment: Alignment.centerRight,
+                      child: const Padding(
+                        padding: EdgeInsets.only(right: 20.0),
+                        child: Icon(Icons.delete, color: Colors.white),
+                      ),
+                    ),
+                    child: ListTile(
+                      title: Text(card.cardNumber,
+                          style: const TextStyle(color: Colors.black)),
+                      subtitle: Text('Expiry Date: ${card.expiryDate}',
+                          style: const TextStyle(color: Colors.black)),
+                      trailing: InkWell(
+                        onTap: () {
+                          _showCvvDialog(card.cvv);
+                        },
+                        child: const Text('CVV: ***',
+                            style: TextStyle(color: Colors.black)),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20.0),
-            ),
-          ),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TextField(
-                controller: _cardNumberController,
-                decoration: const InputDecoration(
-                  labelText: 'Номер карти',
-                ),
-              ),
-              const SizedBox(height: 16.0),
-              TextField(
-                controller: _expiryDateController,
-                decoration: const InputDecoration(
-                  labelText: 'Термін дії',
-                ),
-              ),
-              const SizedBox(height: 16.0),
-              TextField(
-                controller: _cvvController,
-                decoration: const InputDecoration(
-                  labelText: 'CVV',
-                ),
-              ),
-              const SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  String cardNumber = _cardNumberController.text;
-                  String expiryDate = _expiryDateController.text;
-                  String cvv = _cvvController.text;
-                  CardModel card = CardModel(
-                    cardNumber: cardNumber,
-                    expiryDate: expiryDate,
-                    cvv: cvv,
-                  );
-                  setState(() {
-                    cards.add(card);
-                  });
-                  _cardNumberController.clear();
-                  _expiryDateController.clear();
-                  _cvvController.clear();
-                },
-                child: const Text('Додати'),
-              ),
-              const SizedBox(height: 16.0),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: cards.length,
-                  itemBuilder: (context, index) {
-                    CardModel card = cards[index];
-                    return ListTile(
-                      title: Text(card.cardNumber),
-                      subtitle: Text('Термін дії: ${card.expiryDate}'),
-                      trailing: Text('CVV: ${card.cvv}'),
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
+      ),
+    );
+  }
+
+  void _showCvvDialog(String cvv) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('CVV'),
+          content: Text(cvv),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget buildTextField(
+      TextEditingController controller, String labelText, int maxLength) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      decoration: BoxDecoration(
+        color: Colors.black.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(6.0),
+      ),
+      child: TextField(
+        controller: controller,
+        decoration: InputDecoration(
+          labelText: labelText,
+          border: InputBorder.none,
+        ),
+        maxLength: maxLength,
+        style: const TextStyle(
+          color: Colors.black,
         ),
       ),
     );
