@@ -120,6 +120,8 @@ class MyInfoText extends StatelessWidget {
                                   title: title,
                                   switchValue: switchValue,
                                   textWeight: textWeight,
+                                  description:
+                                      '630 Cal.McDonald\'s Quarter Pounder® with Cheese Deluxe — це свіжий погляд на класичний гамбургер Quarter Pounder®. Хрусткий листовий салат і три скибочки помідора Рома доповнюють ¼ фунта 100% свіжої яловичини McDonald’s, гарячої, неймовірно соковитої та приготованої під час замовлення.',
                                 ),
                               ),
                             );

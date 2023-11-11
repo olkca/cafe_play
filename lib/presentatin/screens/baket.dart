@@ -53,13 +53,14 @@ class PaymentScreen extends StatefulWidget {
   }) : super(key: key);
 
   @override
+
   // ignore: library_private_types_in_public_api
   _PaymentScreenState createState() => _PaymentScreenState();
 }
 
 class _PaymentScreenState extends State<PaymentScreen> {
-  List<String> selectedProducts = []; // List of selected products
-  double totalAmount = 0.0; // Total purchase amount
+  List<String> selectedProducts = [];
+  double totalAmount = 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +72,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
         children: [
           ListTile(
             title: Text(widget.title),
-            subtitle: Text('Ціна: ₴${widget.price}'),
+            subtitle: Text('Price: \$${widget.price}'),
             leading: Image.network(widget.imageUrl),
             trailing: IconButton(
               icon: const Icon(Icons.add_circle),
@@ -86,7 +87,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           Container(
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              'Сума: ₴${totalAmount.toStringAsFixed(2)}',
+              'Total Amount: \$${totalAmount.toStringAsFixed(2)}',
               style:
                   const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
@@ -95,17 +96,17 @@ class _PaymentScreenState extends State<PaymentScreen> {
             onPressed: () {
               simulatePayment();
             },
-            child: const Text('Оплата'),
+            child: const Text('Pay'),
           ),
           ElevatedButton(
             onPressed: () {
               navigateToMainScreen();
             },
-            child: const Text('Перейти назад на головний екран'),
+            child: const Text('Go to Main Screen'),
           ),
           const SizedBox(height: 20.0),
           const Text(
-            'Вибрана кількість:',
+            'Selected Products:',
             style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
           ),
           Expanded(
@@ -139,8 +140,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('Оплата'),
-          content: const Text('Оплата пройшла успішно!'),
+          title: const Text('Payment'),
+          content: const Text('Payment successful!'),
           actions: [
             TextButton(
               child: const Text('OK'),

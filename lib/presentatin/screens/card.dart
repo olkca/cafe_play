@@ -151,25 +151,59 @@ class _AddCardScreenState extends State<AddCardScreen> {
                         child: Icon(Icons.delete, color: Colors.white),
                       ),
                     ),
-                    child: ListTile(
-                      title: Text(card.cardNumber,
-                          style: const TextStyle(color: Colors.black)),
-                      subtitle: Text('Expiry Date: ${card.expiryDate}',
-                          style: const TextStyle(color: Colors.black)),
-                      trailing: InkWell(
-                        onTap: () {
-                          _showCvvDialog(card.cvv);
-                        },
-                        child: const Text('CVV: ***',
-                            style: TextStyle(color: Colors.black)),
-                      ),
-                    ),
+                    child: buildCardContainer(
+                        card), // Displaying the card in a bordered container
                   );
                 },
               ),
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildCardContainer(CardModel card) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue, width: 2.0),
+        borderRadius: BorderRadius.circular(15.0),
+        color: Colors.white,
+      ),
+      padding: const EdgeInsets.all(16.0),
+      margin: const EdgeInsets.symmetric(vertical: 8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Card Number: ${card.cardNumber}',
+            style: const TextStyle(color: Colors.black, fontSize: 18),
+          ),
+          const SizedBox(height: 8.0),
+          Text(
+            'Expiry Date: ${card.expiryDate}',
+            style: const TextStyle(color: Colors.black, fontSize: 16),
+          ),
+          const SizedBox(height: 8.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text(
+                'CVV: ***',
+                style: TextStyle(color: Colors.black, fontSize: 16),
+              ),
+              InkWell(
+                onTap: () {
+                  _showCvvDialog(card.cvv);
+                },
+                child: const Text(
+                  'Show CVV',
+                  style: TextStyle(color: Colors.blue, fontSize: 16),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

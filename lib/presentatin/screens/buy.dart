@@ -1,8 +1,4 @@
-import 'package:cafe_pay/presentatin/screens/baket.dart';
-import 'package:cafe_pay/presentatin/screens/home.dart';
-import 'package:cafe_pay/presentatin/screens/settings.dart';
 import 'package:flutter/material.dart';
-import 'about_us.dart';
 
 class MyWidget extends StatelessWidget {
   final bool switchValue;
@@ -10,6 +6,7 @@ class MyWidget extends StatelessWidget {
   final String imageUrl;
   final String title;
   final int price;
+  final String description;
 
   const MyWidget({
     Key? key,
@@ -18,172 +15,171 @@ class MyWidget extends StatelessWidget {
     required this.price,
     required this.switchValue,
     required this.textWeight,
+    required this.description,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Color backgroundColor =
-        switchValue ? const Color.fromARGB(214, 28, 27, 31) : Colors.white;
+    Color leftColor = const Color(0xffFE0A36);
+    Color rightColor = const Color(0xffAC0643);
+    Color topHalfColor = Colors.pink;
+    Color bottomTextColor = Colors.black;
 
     return Scaffold(
-      backgroundColor: backgroundColor,
-      bottomNavigationBar: BottomAppBar(
-        elevation: 8.0,
-        color: Colors.transparent,
-        child: Container(
-          height: 56.0,
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(16.0)),
-            color: Color(0xfff54749),
+      backgroundColor: switchValue ? topHalfColor : Colors.white,
+      body: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 25, left: 10),
+            alignment: Alignment.topLeft,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back),
+              onPressed: () {},
+            ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: switchValue
+                  ? leftColor
+                  : const Color.fromARGB(255, 255, 0, 0),
+              border: Border.all(
+                  color: switchValue ? Colors.red : Colors.transparent),
+            ),
+            child: Image.network(
+              imageUrl,
+              fit: BoxFit.cover,
+            ),
+          ),
+          const SizedBox(height: 5.0),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: switchValue ? bottomTextColor : Colors.red,
+              fontWeight: FontWeight.bold,
+              fontSize: 28.0,
+            ),
+          ),
+          const SizedBox(height: 10.0),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.home),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => MainScreen(
-                              title: 'Home',
-                              imageUrl: imageUrl,
-                              price: price,
-                              textWeight: textWeight,
-                              switchValue: switchValue,
-                              imageURL: '',
-                            )),
-                  );
-                  // Обработка нажатия кнопки "Home"
-                },
-              ),
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.search),
-                onPressed: () {
-                  // Handle "Search" button press
-                },
-              ),
-              IconButton(
-                color: Colors.white,
-                icon: const Icon(Icons.add_shopping_cart),
-                onPressed: () {
-                  // Handle "Cart" button press
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
-      appBar: AppBar(
-        backgroundColor: const Color(0xfff54749),
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            // Perform menu icon action
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const Settings()),
-            );
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.quiz),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => About(
-                    switchValue: switchValue,
-                    textWeight: textWeight,
-                  ),
-                ),
-              );
-            },
-          ),
-        ],
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(20.0),
-          ),
-        ),
-      ),
-      body: Container(
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
                 children: [
-                  Image.network(
-                    imageUrl,
-                    width: 200,
-                    height: 200,
-                  ),
-                  const SizedBox(height: 16.0),
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24.0,
-                    ),
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    '$price грн',
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16.0,
-                    ),
+                  Row(
+                    children: List.generate(5, (index) {
+                      return const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                        size: 25,
+                      );
+                    }),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PaymentSimulationApp(
-                      imageUrl: imageUrl,
-                      price: price,
-                      title: title,
-                      switchValue: switchValue,
-                      textWeight: textWeight,
-                      key: null,
-                    ),
-                  ),
-                );
-              },
-              // ignore: sort_child_properties_last
-              child: const Text(
-                'Додати до кошика',
+              Text(
+                '$price ₴',
                 style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 14.0,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white,
+                  color: switchValue ? bottomTextColor : Colors.black,
+                  fontSize: 20.0,
                 ),
               ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              children: [
+                Text(
+                  'Опис',
+                  style: TextStyle(
+                    color: switchValue ? bottomTextColor : Colors.black,
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(height: 5),
+                Text(
+                  description,
+                  style: TextStyle(
+                    color: switchValue ? bottomTextColor : Colors.black,
+                    fontSize: 15.0,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+          const Expanded(
+            child: SizedBox(),
+          ),
+          Container(
+            margin: const EdgeInsets.all(15),
+            child: ElevatedButton(
+              onPressed: () {
+                // Дія для кнопки
+              },
               style: ElevatedButton.styleFrom(
-                // ignore: deprecated_member_use
-                primary: const Color(0xfff54749),
+                backgroundColor: Colors.transparent,
+                elevation: 0,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
+                minimumSize: const Size(double.infinity, 50),
+              ),
+              child: SizedBox(
+                height: 50.0,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 3,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: leftColor,
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            bottomLeft: Radius.circular(20),
+                          ),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            'добавити в кошик',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: rightColor,
+                          borderRadius: const BorderRadius.only(
+                            topRight: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
+                          ),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            '₴24.99',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

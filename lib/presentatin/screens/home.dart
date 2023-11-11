@@ -57,7 +57,8 @@ class MainScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AddCardScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const AddCardScreen()),
                   );
                   // Handle "Cart" button press
                 },
@@ -130,11 +131,11 @@ class MainScreen extends StatelessWidget {
               ],
             ),
             MyInfoText(
-              title: "Beef Burger",
+              title: "Ультра делюкс мега бургер",
               content: "<Бургер>",
               imageUrl:
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
-              price: 63,
+              price: 25,
               onPressed: () {
                 _navigateToProductScreen(
                   context,
