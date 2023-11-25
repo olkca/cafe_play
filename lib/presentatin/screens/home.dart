@@ -132,7 +132,7 @@ class MainScreen extends StatelessWidget {
             ),
             MyInfoText(
               title: "Ультра делюкс мега бургер",
-              content: "<Бургер>",
+              content: " фунта 100% свіжої під час замовлення.",
               imageUrl:
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126099275412156457/2015-02-24-olive-test-d5b505c.jpg",
               price: 25,
@@ -150,7 +150,7 @@ class MainScreen extends StatelessWidget {
             ),
             MyInfoText(
               title: "King Sundae",
-              content: "Коктель",
+              content: "Коктелurutrueurfgudhь",
               imageUrl:
                   "https://cdn.discordapp.com/attachments/1108066032448438416/1126207069209493525/BK_Sundae-Chocolate.png",
               price: 100,
