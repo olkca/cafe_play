@@ -1,183 +1,183 @@
-import 'package:cafe_pay/presentatin/screens/home.dart';
 import 'package:flutter/material.dart';
 
-class PaymentSimulationApp extends StatelessWidget {
-  final bool switchValue;
-  final FontWeight textWeight;
-  final String imageUrl;
-  final int price;
-  final String title;
+void main() {
+  runApp(MyApp());
+}
 
-  // ignore: use_key_in_widget_constructors
-  const PaymentSimulationApp({
-    required this.switchValue,
-    required this.textWeight,
-    required this.imageUrl,
-    required this.price,
-    required this.title,
-    required key,
-  });
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Payment Simulation',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
-      home: PaymentScreen(
-        title: title,
-        imageUrl: imageUrl,
-        price: price,
-        switchValue: switchValue,
-        textWeight: textWeight,
-      ),
+      home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
-class PaymentScreen extends StatefulWidget {
-  final String title;
-  final String imageUrl;
-  final int price;
-  final bool switchValue;
-  final FontWeight textWeight;
-
-  const PaymentScreen({
-    required this.title,
-    required this.imageUrl,
-    required this.price,
-    required this.switchValue,
-    required this.textWeight,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _PaymentScreenState createState() => _PaymentScreenState();
-}
-
-class _PaymentScreenState extends State<PaymentScreen> {
-  List<String> selectedProducts = []; // List of selected products
-  double totalAmount = 0.0; // Total purchase amount
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Payment Simulation'),
+        backgroundColor: Color(0xfff35120),
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {},
+        ),
       ),
-      body: Column(
-        children: [
-          ListTile(
-            title: Text(widget.title),
-            subtitle: Text('Price: \$${widget.price}'),
-            leading: Image.network(widget.imageUrl),
-            trailing: IconButton(
-              icon: const Icon(Icons.add_circle),
-              onPressed: () {
-                setState(() {
-                  selectedProducts.add(widget.title);
-                  totalAmount += widget.price.toDouble();
-                });
-              },
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(16.0),
-            child: Text(
-              'Total Amount: \$${totalAmount.toStringAsFixed(2)}',
-              style:
-                  const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-            ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              simulatePayment();
-            },
-            child: const Text('Pay'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              navigateToMainScreen();
-            },
-            child: const Text('Go to Main Screen'),
-          ),
-          const SizedBox(height: 20.0),
-          const Text(
-            'Selected Products:',
-            style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
-          ),
-          Expanded(
-            child: ListView.builder(
-              itemCount: selectedProducts.length,
-              itemBuilder: (BuildContext context, int index) {
-                final product = selectedProducts[index];
-                return ListTile(
-                  title: Text(product),
-                  trailing: IconButton(
-                    icon: const Icon(Icons.remove_circle),
-                    onPressed: () {
-                      setState(() {
-                        selectedProducts.removeAt(index);
-                        totalAmount -= widget.price.toDouble();
-                      });
-                    },
+      body: Container(
+        width: double.infinity,
+        height: 896,
+        decoration: BoxDecoration(
+          color: Color(0xfff35120),
+        ),
+        child: Stack(
+          children: [
+            Positioned(
+              top: 0,
+              left: -100,
+              child: ClipPath(
+                clipper: CustomEllipseClipper(radius: 150),
+                child: Container(
+                  width: 300,
+                  height: 300,
+                  decoration: BoxDecoration(
+                    gradient: RadialGradient(
+                      colors: [Color.fromARGB(255, 169, 207, 2), Color(0xfff35120)],
+                    ),
                   ),
-                );
-              },
+                ),
+              ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void simulatePayment() {
-    // Simulating the payment process
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Payment'),
-          content: const Text('Payment successful!'),
-          actions: [
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => MainScreen(
-                            imageUrl: widget.imageUrl,
-                            price: widget.price,
-                            textWeight: widget.textWeight,
-                            switchValue: widget.switchValue,
-                            title: widget.title,
-                            imageURL: '',
-                          )),
-                );
-              },
+            Positioned(
+              top: 150,
+              left: 0,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 750,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 177, 177, 177),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 50,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: Text(
+                  'Кашик',
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 50,
+              left: 340,
+              child: ClipPath(
+                clipper: CustomEllipseClipper(radius: 50),
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    gradient: RadialGradient(
+                      colors: [Colors.yellow, Color(0xfff35120)],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              left: 0,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 150,
+                decoration: BoxDecoration(
+                  color: Colors.blue,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 10,
+              right: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      'Додати промокод',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Обробник події для кнопки "Замовити"
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.red,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                      padding: EdgeInsets.all(16.0), // Змінено розміри кнопки
+                    ),
+                    child: Text('Замовити'),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 10,
+              left: 10,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: Text(
+                      '₴ Виберіть спосіб оплати та ↑',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  Text(
+                    'Сума: цифра',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
             ),
           ],
-        );
-      },
-    );
-  }
-
-  void navigateToMainScreen() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => MainScreen(
-          imageUrl: widget.imageUrl,
-          price: widget.price,
-          textWeight: widget.textWeight,
-          switchValue: widget.switchValue,
-          title: widget.title,
-          imageURL: '',
         ),
       ),
     );
+  }
+}
+
+class CustomEllipseClipper extends CustomClipper<Path> {
+  final double radius;
+
+  CustomEllipseClipper({required this.radius});
+
+  @override
+  Path getClip(Size size) {
+    final path = Path()
+      ..addOval(Rect.fromCircle(center: Offset(size.width / 2, size.height / 2), radius: radius));
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
   }
 }

@@ -176,7 +176,7 @@ class MyWidget extends StatelessWidget {
               ),
               style: ElevatedButton.styleFrom(
                 // ignore: deprecated_member_use
-                primary: const Color(0xfff54749),
+                primary: Color.fromARGB(255, 96, 228, 8),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
